@@ -15,7 +15,7 @@ export const Header = () => {
             <h2 className='text-5xl sm:text-6xl md:text-[82px] inline-block max-w-3xl font-semibold pt-20 text-white'>Empowering Your Business for Success</h2>
             <div className='space-x-6 mt-16'>
                 <a href="#Projects" className='border border-white px-8 py-3 rounded hover:bg-white hover:text-black'>Services</a>
-                <a href="#Contact" className='bg-blue-500 px-8 py-3 rounded hover:bg-blue-800'>Book a Free Consultation</a>
+                <a href="#Contact" className='bg-blue-500 px-8 py-3 rounded hover:bg-blue-800'>Contact Us</a>
             </div>
         </motion.div>
     </div>
