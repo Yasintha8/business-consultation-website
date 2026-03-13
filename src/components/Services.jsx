@@ -33,48 +33,65 @@ const Projects = () => {
 
   return (
     <motion.div 
-      initial={{opacity:0, x:-200}}
-      transition={{duration: 1}}
-      whileInView={{opacity: 1, x:0}}
-      viewport={{once: true}}
-    className='container mx-auto py-4 pt-20px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden' id='Projects'>
-      <h1 className='text-2xl sm:text-4xl font-bold md-2 text-center'>Services <span className='text-blue-500'>Offered</span></h1>
-      <p className='text-center text-gray-500 mb-8 mt-4 max-w-80 mx-auto'>Streamline Operations, Maximize Results</p>
+      initial={{opacity:0, y:50}}
+      transition={{duration: 1, ease: 'easeOut'}}
+      whileInView={{opacity: 1, y:0}}
+      viewport={{once: true, amount: 0.2}}
+    className='container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden relative z-10' id='Projects'>
+      
+      <motion.div
+         initial={{opacity:0, y:20}}
+         whileInView={{opacity: 1, y:0}}
+         transition={{duration: 0.8}}
+         className="text-center"
+      >
+        <h1 className='text-3xl sm:text-5xl font-bold mb-2 text-slate-800 dark:text-slate-100 tracking-tight'>Services <span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500'>Offered</span></h1>
+        <p className='text-center text-gray-500 dark:text-gray-400 mb-12 mt-4 max-w-xl mx-auto text-lg'>Streamline Operations, Maximize Results. Tailored solutions for your business growth.</p>
+      </motion.div>
 
       {/* slider buttons */}
-
-      <div className='flex justify-end items-center mb-8'>
+      <div className='flex justify-end items-center mb-10 gap-4'>
         <button onClick={prevProject}
-        className='p-3 bg-gray-200 rounded mr-2'aria-label='Previous Project' >
-          <img src={assets.left_arrow} alt="Previous" />
+        className='p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-full shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 transition-all duration-300' aria-label='Previous Project' >
+          <img src={assets.left_arrow} alt="Previous" className="w-5 h-5 opacity-70 dark:invert" />
         </button>
         <button onClick={nextProject}
-        className='p-3 bg-gray-200 rounded mr-2'aria-label='Next Project' >
-          <img src={assets.right_arrow} alt="Next" />
+        className='p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-full shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-slate-700 hover:scale-110 transition-all duration-300' aria-label='Next Project' >
+          <img src={assets.right_arrow} alt="Next" className="w-5 h-5 opacity-70 dark:invert" />
         </button>
       </div>
 
     {/* project slider container */}
-    <div className='overflow-hidden'>
-      <div className='flex gap-8 transition-tarnsform duration-500 ease-in-out'
+    <div className='overflow-hidden rounded-2xl p-4 -mx-4'>
+      <div className='flex gap-8 transition-transform duration-700 ease-in-out'
     style={{transform: `translateX(-${(currentIndex * 100) / cardsToShow}%)`}}
       >
         {projectsData.map((project, index)=>(
-          <div key={index} className='relative flex-shrink-0 w-full sm:w-1/4 hover:scale-105 transition duration-500'>
-            <img src={project.image} alt={project.title} className='w-full h-auto mb-14'/>
-            <div className='absolute left-0 right-0 bottom-5 flex justify-center'>
-            <div className='inline-block bg-white w-full sm:w-3/4 h-[120px] sm:h-[160px] px-4 py-2 shadow-md border border-gray-200 backdrop-blur-lg rounded-lg'>
-                <h2 className='text-xl font-semibold text-gray-800'>
+          <motion.div 
+             key={index} 
+             whileHover={{y: -10}}
+             className='relative flex-shrink-0 w-full lg:w-[calc(33.333%-1.5rem)] group cursor-pointer'
+          >
+            <div className="overflow-hidden rounded-2xl shadow-lg border border-white/40 dark:border-slate-700/50 bg-white/60 dark:bg-slate-800/60 backdrop-blur-md">
+              <div className="overflow-hidden relative h-64">
+                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                <img src={project.image} alt={project.title} className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out'/>
+              </div>
+              <div className='p-8 relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl z-20 -mt-10 mx-6 rounded-xl shadow-xl shadow-slate-200/50 dark:shadow-blue-900/10 border border-white/50 dark:border-slate-600/50 group-hover:-translate-y-2 transition-transform duration-500'>
+                <h2 className='text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 group-hover:text-blue-600 transition-colors'>
                   {project.title}
                 </h2>
-                <p className='text-gray-500 text-sm '>
-                  <ul>
-                    <li>{project.price}</li>
+                <div className='text-slate-500 dark:text-slate-400 text-sm font-medium'>
+                  <ul className="space-y-1">
+                    <li className="flex items-center">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></span>
+                      {project.price}
+                    </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
