@@ -1,4 +1,5 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![React](https://img.shields.io/badge/React-v18-green.svg)
 <h1>🚀 NextWave Solution - Business Consultation Website 🌍</h1>
 
 This is a landing page website created for NextWave Solution, a business consultation company. The website is built using <b>React</b> to ensure a modern, responsive, and dynamic user experience.
